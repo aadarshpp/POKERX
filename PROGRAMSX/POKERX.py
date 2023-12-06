@@ -651,7 +651,7 @@ def game(round_no, state=1, new=True):
             if state == 2:
                 raised_by[0] = True
                 raised_by[1] = i
-                min_bet = amount
+                if i!=0: min_bet = amount
             
             # Update the message with the player's bet
             msg += f"\n{players[i]} bet {min_bet}$\n"
