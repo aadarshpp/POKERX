@@ -115,12 +115,12 @@ def get_move(player_hand, displayed_pile, round_state, min_bet, balance, toleren
         return state, bet
     
     if l < .03 * tolerence:
-        return 2, int(max(balance*.5, min_bet))
+        return 2, int(max(balance*.5, min_bet+100))
     
     if l < .25 * tolerence:
         r = int(max(min_bet+100, min_bet*(1+w/2)))
-        if balance > r: return 2, r 
-        if balance > min_bet + 100: return 2, min_bet + 100
+        if balance >= r: return 2, r 
+        if balance >= min_bet + 100: return 2, min_bet + 100
         return state, bet
     
     if state==3: return state, bet 
