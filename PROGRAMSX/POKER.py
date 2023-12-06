@@ -12,7 +12,7 @@ w = win.winfo_screenwidth()
 h = win.winfo_screenheight()
 win.title("Poker")
 win.geometry(f"{w}x{h}+0+0")
-# win.overrideredirect(True)
+win.overrideredirect(True)
 
 # Returns the path for an image file
 def path(imagename):
