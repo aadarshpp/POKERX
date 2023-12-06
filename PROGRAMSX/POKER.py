@@ -12,7 +12,7 @@ w = win.winfo_screenwidth()
 h = win.winfo_screenheight()
 win.title("Poker")
 win.geometry(f"{w}x{h}+0+0")
-win.overrideredirect(True) 
+# win.overrideredirect(True)
 
 # Returns the path for an image file
 def path(imagename):
@@ -591,7 +591,7 @@ def game(round_no, state=1, new=True):
     if state == 0:
         player_folded = True
         folded.append(0)
-
+        
     # Iterate through players to determine their moves
     for i in range(4):
         # Skip players who have already folded
@@ -614,8 +614,7 @@ def game(round_no, state=1, new=True):
             displayed_pile = [i for i in display_pile if type(i) is tuple]
             n = 3 - len(folded)
             no_fold = i == 2
-            new_state, amount = PREDICT.get_move(realhands[i], displayed_pile, round_state, min_bet, balances[i],
-                                                round_no * (j**2) / 11, n, no_fold)
+            new_state, amount = PREDICT.get_move(realhands[i], displayed_pile, round_state, min_bet, balances[i], round_no * (j**2) / 11, n, no_fold)
         
         # Handle the case where the AI player folds
         if new_state == 0:
@@ -641,6 +640,7 @@ def game(round_no, state=1, new=True):
             if state == 2:
                 raised_by[0] = True
                 raised_by[1] = i
+                min_bet = amount
             
             # Update the message with the player's bet
             msg += f"\n{players[i]} bet {min_bet}$\n"
