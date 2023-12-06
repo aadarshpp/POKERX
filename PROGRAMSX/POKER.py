@@ -25,7 +25,7 @@ def cardpath(c):
     NAMING METHOD:
        (1) Most cards -->  "{card_no*} of {first letter of suit}.png"
        (*) Face cards are given a number --> {Jack: 11, Queen: 12, King: 13, Ace: 14*}
-       (*) Ace can take both value 1 and 14, for naming it's taken as 14 for convinience
+       (*) Ace can take both values 1 and 14, for naming it's taken as 14 for convinience
        (2) Back of a card -->  -1
        (3) FOLDED card (back) --> -2
     '''
