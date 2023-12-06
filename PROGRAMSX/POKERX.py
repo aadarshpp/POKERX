@@ -388,8 +388,8 @@ def endroundmsg(w, r, p, perwin):
          
     else:
         ws = ""
-        for i in w: ws += players[i]+",\n"
-        fontsize = 20 * (len(w)+4)/5
+        for i in w: ws += players[i]+",\n" if i!=0 else ""
+        fontsize = 20 * (len(w)+4)/7
         
         # Check if the game ended in a tie
         if 0 in w:
