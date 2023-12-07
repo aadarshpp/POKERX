@@ -13,7 +13,6 @@ w = win.winfo_screenwidth()
 h = win.winfo_screenheight()
 win.title("Poker")
 win.geometry(f"{w}x{h}+0+0")
-# win.overrideredirect(True)
 
 # Returns the path for an image file
 def path(imagename):
@@ -442,11 +441,12 @@ def play(round_no, first=False, showdown=False):
             
     # STATES (MOVES)  -->   {0: FOLD, 1: CALL, 2: RAISE, 3: CHECK}
     
+    global raised_by
+    if raised_by[1] == 0:
+        raised_by[0] = False
+    
     # Function to handle game state transitions
     def game_call(state):
-        global raised_by
-        if raised_by[1] == 0:
-            raised_by[0] = False
         if bets[0] + balances[0] < 100 and round_no < 3:
             # Player is out of money
             exitlabel = ctk.CTkLabel(win, w, h, corner_radius=0, text="YOU ARE OUT OF MONEY\n\n...", font=("kongtext", 40), text_color="#870101")
@@ -475,6 +475,7 @@ def play(round_no, first=False, showdown=False):
         imagebutton("NEXT.png", (180, 45), fg_c="black", hover_c="black", Rx=.5, Ry=.94, Command=lambda: game_call(0))
     else:
         # Display buttons for an active player
+        
         imagebutton("FOLD.png", (180, 60), fg_c="black", hover_c="blue", Rx=.2, Ry=.94, Command=lambda: game_call(0))
         if first:
             imagebutton("BET.png", (180, 60), fg_c="black", hover_c="green", Rx=.5, Ry=.94, Command=lambda: game_call(1))
@@ -529,7 +530,7 @@ def play(round_no, first=False, showdown=False):
 
 # Execute player and opponent moves and call play() accordingly
 def game(round_no, state=1, new=True):
-    global realhands, realpile, display_pile, display_hands, bets, balances, min_bet, folded, player_folded, raised_by
+    global realhands, realpile, display_pile, display_hands, bets, balances, min_bet, folded, player_folded
     
     # Initialization for the first round
     if round_no == 0:
@@ -605,7 +606,8 @@ def game(round_no, state=1, new=True):
         
     # Iterate through players to determine their moves
     for i in range(4):
-        # Skip players who have already folded
+        global raised_by
+        
         if i in folded:
             continue
         
