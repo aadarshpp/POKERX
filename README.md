@@ -77,10 +77,11 @@ POKERX/
 ├── IMAGES/
 │   ├── CARDS/                   # Folder containing card images
 │   └── ...                       # Other image assets (background, etc.)
-├── PROGRAMS/
-│   ├── COMPUTE.py               # Helper functions for computations
-│   ├── PREDICT.py               # Functions for AI move and probability calculations
-│   └── POKERX.py                # Main game logic and UI
+│
+├── COMPUTE.py                   # Helper functions for computations
+├── PREDICT.py                   # Functions for AI move and probability calculations
+├── POKERX.py                    # Main game logic and UI
+│
 ├── requirements.txt             # Python dependencies
 └── README.md                    # This file
 ```
