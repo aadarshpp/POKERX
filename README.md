@@ -11,7 +11,7 @@ POKERX is a Texas Hold'em poker game developed in Python using `customtkinter` f
 - **Learning Section**: A dedicated section to help you learn poker strategies.
 - **Cheat Section**: A section for testing and using cheats to modify game parameters.
 
-# How to play
+## How to play
 
 When you start POKERX, you will be presented with the following options on the main screen:
 
