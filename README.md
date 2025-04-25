@@ -77,15 +77,16 @@ If you prefer to run the game from the source code, follow these steps:
 ```
 POKERX/
 ├── IMAGES/
-│   ├── CARDS/                   # Folder containing card images
-│   └── ...                       # Other image assets (background, etc.)
+│   ├── CARDS/                   # Card image assets
+│   └── ...                      # Other visual assets
 │
-├── COMPUTE.py                   # Helper functions for computations
-├── PREDICT.py                   # Functions for move predictions and probability calculations
-├── POKERX.py                    # Main game logic and UI
+├── COMPUTE.py                   # Core logic for calculations
+├── PREDICT.py                   # Probability calculations
+├── POKERX.py                    # Main file — handles game flow and UI
 │
-├── requirements.txt             # Python dependencies
-└── README.md                    # This file
+├── requirements.txt             # List of required Python packages
+├── README.md                    # Project overview and usage instructions
+└── LICENSE                      # MIT License (open-source)
 ```
 
 ## Troubleshooting
