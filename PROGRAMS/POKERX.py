@@ -1,4 +1,8 @@
-# Importing in-build/installed modules
+# Importing in-build modules
+import sys
+import os
+
+# Importing installed modules
 import customtkinter as ctk
 from PIL import Image
 
@@ -13,9 +17,16 @@ h = win.winfo_screenheight()
 win.title("Poker")
 win.geometry(f"{w}x{h}+0+0")
 
+# Set base path
+if getattr(sys, 'frozen', False):
+    base_path = sys._MEIPASS
+else:
+    base_path = os.path.dirname(__file__)
+
 # Returns the path for an image file
 def path(imagename):
-    return fr"./IMAGES/{imagename}"
+    image_path = os.path.join(base_path, 'IMAGES')
+    return  os.path.join(image_path, imagename)
 
 # Returns the path for a card image based on the card value
 def cardpath(c):
@@ -28,14 +39,19 @@ def cardpath(c):
        (2) Back of a card -->  -1
        (3) FOLDED card (back) --> -2
     '''
+
+    
+    image_path = os.path.join(base_path, 'IMAGES')
+    cards_path = os.path.join(image_path, 'CARDS')
     
     if c is None:
         return None
     if c == -1:
-        return r"CARDS\BACK.png"
+        return os.path.join(cards_path, "BACK.png")
     if c == -2:
-        return r"CARDS\FOLDED.png"
-    return f"CARDS\{c[1]} of {c[0]}.png"
+        return os.path.join(cards_path, "FOLDED.png")
+
+    return os.path.join(cards_path, f"{c[1]} of {c[0]}.png")
 
 def bgimage(imagename, Size=(w, h)):
     
