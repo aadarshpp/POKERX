@@ -4,6 +4,7 @@ import os
 
 # Importing installed modules
 import customtkinter as ctk
+from tkinter import font
 from PIL import Image
 
 # Importing user defined modules
@@ -95,7 +96,7 @@ def imagebutton(Imagename, Size, Rx=.5, Ry=.5, Command=None, fg_c="black", hover
     return button
 
 # Places a label with an image and optional text at a given position
-def imagelabel(Imagename, Size, Text="", Font=("kongtext", 20), Rx=.5, Ry=.5, fg_c="black", Anchor="center"):
+def imagelabel(Imagename, Size, Text="", Font=("Impact", 20), Rx=.5, Ry=.5, fg_c="black", Anchor="center"):
     
     '''
     Places a label with an image and optional text at a given position.
@@ -104,7 +105,7 @@ def imagelabel(Imagename, Size, Text="", Font=("kongtext", 20), Rx=.5, Ry=.5, fg
     - Imagename (str): The name of the image file for the label.
     - Size (tuple): The size of the label.
     - Text (str, optional): The text to be displayed on the label. Defaults to an empty string.
-    - Font (tuple, optional): The font for the text. Defaults to ("kongtext", 20).
+    - Font (tuple, optional): The font for the text. Defaults to ("Impact", 20).
     - Rx (float, optional): The relative x-coordinate of the label. Defaults to 0.5.
     - Ry (float, optional): The relative y-coordinate of the label. Defaults to 0.5.
     - fg_c (str, optional): The foreground color of the label. Defaults to "black".
@@ -122,7 +123,7 @@ def imagelabel(Imagename, Size, Text="", Font=("kongtext", 20), Rx=.5, Ry=.5, fg
     return label
 
 # Places a button with given text at a given position
-def textbutton(Text, Command, Font=("kongtext", 30), fg_c="black", hover_c="white", text_c="grey", width=40, height=40, Rx=0, Ry=0, Anchor="center"):
+def textbutton(Text, Command, Font=("Impact", 30), fg_c="black", hover_c="white", text_c="white", width=40, height=40, Rx=0, Ry=0, Anchor="center"):
     
     '''
     Places a button with given text at a given position.
@@ -130,10 +131,10 @@ def textbutton(Text, Command, Font=("kongtext", 30), fg_c="black", hover_c="whit
     Parameters:
     - Text (str): The text to be displayed on the button.
     - Command (function): The function to be called when the button is clicked.
-    - Font (tuple, optional): The font for the text. Defaults to ("kongtext", 30).
+    - Font (tuple, optional): The font for the text. Defaults to ("Impact", 30).
     - fg_c (str, optional): The foreground color of the button. Defaults to "black".
     - hover_c (str, optional): The hover color of the button. Defaults to "white".
-    - text_c (str, optional): The color of the text. Defaults to "grey".
+    - text_c (str, optional): The color of the text. Defaults to "white".
     - width (int, optional): The width of the button. Defaults to 40.
     - height (int, optional): The height of the button. Defaults to 40.
     - Rx (float, optional): The relative x-coordinate of the button. Defaults to 0.5.
@@ -150,11 +151,11 @@ def textbutton(Text, Command, Font=("kongtext", 30), fg_c="black", hover_c="whit
     button.place(relx=Rx, rely=Ry, anchor=Anchor)
     return button
 
-def back_button(prev, font=("kongtext", 30)): return textbutton("<", prev, Font=font, Rx=0, Ry=0, Anchor="nw")
+def back_button(prev, font=("Impact", 30)): return textbutton("<", prev, Font=font, Rx=0, Ry=0, Anchor="nw")
 def next_button(next): textbutton(">", Command=next, Rx=1, Ry=0, Anchor="ne")
 def full_back_button(): textbutton("<<", Command=home, Rx=1, Ry=0, Anchor="ne")
 
-def textlabel(Text='', wd=0, ht=28, Font=('kongtext', 20), Rx=0, Ry=0, fg_c='black', Anchor='center'):
+def textlabel(Text='', wd=0, ht=28, Font=('Impact', 20), Rx=0, Ry=0, fg_c='black', Anchor='center'):
     
     '''
     Places a label with given text at a given position.
@@ -163,7 +164,7 @@ def textlabel(Text='', wd=0, ht=28, Font=('kongtext', 20), Rx=0, Ry=0, fg_c='bla
     - Text (str, optional): The text to be displayed on the label. Defaults to an empty string.
     - wd (int, optional): The width of the label. Defaults to 0.
     - ht (int, optional): The height of the label. Defaults to 28.
-    - Font (tuple, optional): The font for the text. Defaults to ('kongtext', 20).
+    - Font (tuple, optional): The font for the text. Defaults to ('Impact', 20).
     - Rx (float, optional): The relative x-coordinate of the label. Defaults to 0.5.
     - Ry (float, optional): The relative y-coordinate of the label. Defaults to 0.5.
     - fg_c (str, optional): The foreground color of the label. Defaults to 'black'.
@@ -260,33 +261,33 @@ def cheat():
 
     # Places buttons with given foreground and text colors
     def buttons(cfg, ctc, qfg, qtc):
-        back_button(home, font=('kongtext', 42))
-        textbutton('c', cheat_main, ('kongtext', 42), fg_c=cfg, text_c=ctc, Rx=0, Ry=0.1, Anchor='nw')
-        textbutton('?', cheat_about, ('kongtext', 42), fg_c=qfg, text_c=qtc, Rx=0, Ry=0.2, Anchor='nw')
+        back_button(home, font=('Impact', 42))
+        textbutton('c', cheat_main, ('Impact', 42), fg_c=cfg, text_c=ctc, Rx=0, Ry=0.1, Anchor='nw')
+        textbutton('?', cheat_about, ('Impact', 42), fg_c=qfg, text_c=qtc, Rx=0, Ry=0.2, Anchor='nw')
 
     def cheat_about():
         # Displays information about cheats
         bgimage('CHEAT_ABOUT.png')
-        buttons('black', 'grey', 'blue', 'white')
+        buttons('black', 'white', 'blue', 'white')
 
     def cheat_main():
         # Displays the main cheat screen with activated cheat buttons
         bgimage('CHEAT_MAIN.png')
-        buttons('blue', 'white', 'black', 'grey')
+        buttons('blue', 'white', 'black', 'white')
 
         for i in range(len(activated)):
             on(i) if activated[i] else off(i)
 
-        textbutton(' OFF ', Font=('kongtext', 40), Command=err, Rx=.7, Ry=4*.195+.102, fg_c='black', text_c='red', width=50, height=30)
+        textbutton(' OFF ', Font=('Impact', 40), Command=err, Rx=.7, Ry=4*.195+.102, fg_c='black', text_c='red', width=50, height=30)
 
     def on(n):
         # Activates the cheat at index 'n'
-        textbutton(' ON ', Font=('kongtext', 40), Command=lambda: off(n), Rx=.7, Ry=n*.197+.102, fg_c='black', text_c='green')
+        textbutton(' ON ', Font=('Impact', 40), Command=lambda: off(n), Rx=.7, Ry=n*.197+.102, fg_c='black', text_c='green')
         activated[n] = True
 
     def off(n):
         # Deactivates the cheat at index 'n'
-        textbutton(' OFF ', Font=('kongtext', 40), Command=lambda: on(n), Rx=.7, Ry=n*.197+.102, fg_c='black', text_c='red', width=50, height=30)
+        textbutton(' OFF ', Font=('Impact', 40), Command=lambda: on(n), Rx=.7, Ry=n*.197+.102, fg_c='black', text_c='red', width=50, height=30)
         activated[n] = False
 
     def err():
@@ -332,7 +333,7 @@ def cheat_box(hand):
         msg = '\nSHOW CC : ACTIVATED\n' + msg
 
     # Display the information using an image label
-    imagelabel('BLACK_BG.png', Size=(370, 210), Text=msg, Font=('kongtext', 14), Rx=.85, Ry=.15)
+    imagelabel('BLACK_BG.png', Size=(370, 210), Text=msg, Font=('Impact', 14), Rx=.85, Ry=.15)
 
 
         
@@ -356,7 +357,7 @@ def raise_bet(round_no, balances):
     def slider_disp(Text):
         nonlocal amount_label
         amount_label.destroy()
-        amount_label = ctk.CTkLabel(win, corner_radius=0, text=Text, font=("Kongtext", 20), fg_color="transparent")
+        amount_label = ctk.CTkLabel(win, corner_radius=0, text=Text, font=("Impact", 20), fg_color="transparent")
         amount_label.place(relx=.87, rely=.67)
         return amount_label
     
@@ -381,7 +382,7 @@ def raise_bet(round_no, balances):
         amount_label.destroy()
         game(round_no+1, state=2)
         
-    tbutton = textbutton("CONFIRM", Font=("kongtext", 20), Command=confirm, Rx=.9, Ry=.82)
+    tbutton = textbutton("CONFIRM", Font=("Impact", 20), Command=confirm, Rx=.9, Ry=.82)
 
 # Convenience function that returns the text to be displayed at the end of a game
 def endroundmsg(w, r, p, perwin):
@@ -456,13 +457,13 @@ def play(round_no, first=False, showdown=False):
     def game_call(state):
         if bets[0] + balances[0] < 100 and round_no < 3:
             # Player is out of money
-            exitlabel = ctk.CTkLabel(win, w, h, corner_radius=0, text="YOU ARE OUT OF MONEY\n\n...", font=("kongtext", 40), text_color="#870101")
+            exitlabel = ctk.CTkLabel(win, w, h, corner_radius=0, text="YOU ARE OUT OF MONEY\n\n...", font=("Impact", 40), text_color="#870101")
             exitlabel.place(relx=.5, rely=.5, anchor="center")
             exitlabel.after(1000, home)
             return
         if sum(bets[1:]) + sum(balances[1:]) == 0:
             # Player won the game
-            exitlabel = ctk.CTkLabel(win, w, h, corner_radius=0, text=f"YOU WON THE GAME\n\nWON {balances[0]}$", font=("kongtext", 40), text_color="white")
+            exitlabel = ctk.CTkLabel(win, w, h, corner_radius=0, text=f"YOU WON THE GAME\n\nWON {balances[0]}$", font=("Impact", 40), text_color="white")
             exitlabel.place(relx=.5, rely=.5, anchor="center")
             exitlabel.after(1000, home)
             return
@@ -527,7 +528,7 @@ def play(round_no, first=False, showdown=False):
     
     # Display leave button
     def leave():
-        tlabel = ctk.CTkLabel(win, w, h, corner_radius=0, text=f"YOU LEFT WITH\n\n{balances[0]}$", font=("kongtext", 40))
+        tlabel = ctk.CTkLabel(win, w, h, corner_radius=0, text=f"YOU LEFT WITH\n\n{balances[0]}$", font=("Impact", 40))
         tlabel.place(relx=0.5, rely=0.5, anchor="center")
         tlabel.after(1000, home)
         
@@ -581,11 +582,11 @@ def game(round_no, state=1, new=True):
         
         def display():
             # Display the result message
-            imagelabel("BLACK_BG.PNG", Text=msg, Font=("kongtext", fontsize), Size=(370, 210), Rx=.85, Ry=.76)
+            imagelabel("BLACK_BG.PNG", Text=msg, Font=("Impact", fontsize), Size=(370, 210), Rx=.85, Ry=.76)
             
             if not player_folded:
                 # Display buttons for the next round
-                imagebutton("BLACK.png", (1100, 60), fg_c="black", hover_c="grey", Rx=.5, Ry=.94, Command=lambda: game(0, new=False))
+                imagebutton("BLACK.png", (1100, 60), fg_c="black", hover_c="white", Rx=.5, Ry=.94, Command=lambda: game(0, new=False))
                 imagebutton("NEXT.png", (180, 45), fg_c="black", hover_c="black", Rx=.5, Ry=.94, Command=lambda: game(0, new=False))
         
         # Display the result after a short delay
@@ -680,7 +681,7 @@ def game(round_no, state=1, new=True):
     play(round_no)
 
     # Display the message for the current round
-    imagelabel("BLACK_BG.PNG", Text=msg, Size=(370, 210), Rx=.85, Ry=.76, Font=("kongtext", 15))
+    imagelabel("BLACK_BG.PNG", Text=msg, Size=(370, 210), Rx=.85, Ry=.76, Font=("Impact", 15))
 
     # Check if it's the last round or if all other players have folded to initiate showdown
     if round_no == 4 or len(folded) == 3:
