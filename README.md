@@ -1,7 +1,7 @@
 
 # POKERX
 
-POKERX is a Texas Hold'em poker game developed in Python using `customtkinter` for the user interface, along with various other libraries for game mechanics and decision-making. You can either download the executable file (`POKERX.exe`) from the `Releases` section or clone the repository and run it in your local environment.
+POKERX is a Texas Hold'em poker game developed in Python using `customtkinter` for the user interface, along with various other libraries for game mechanics and decision-making. You can either download the executable file (`POKERX.exe`) from [`Releases`](https://github.com/aadarshpp/POKERX/releases)/[`itch.io`](https://aadarshpp.itch.io/pokerx) or clone the repository and run it in your local environment.
 
 ## Features
 
