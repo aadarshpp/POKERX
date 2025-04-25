@@ -8,8 +8,20 @@ POKERX is a Texas Hold'em poker game developed in Python using `customtkinter` f
 - **Interactive Poker Game**: A fully functional Texas Hold'em poker game with computer-controlled opponents.
 - **Move Prediction**: The game includes automated decision-making for the opponents based on game probabilities.
 - **Custom UI**: Built using `customtkinter` for a visually appealing and intuitive interface.
-- **Cheat Section**: A section for testing and using cheats to modify game parameters.
 - **Learning Section**: A dedicated section to help you learn poker strategies.
+- **Cheat Section**: A section for testing and using cheats to modify game parameters.
+
+# How to play
+
+When you start POKERX, you will be presented with the following options on the main screen:
+
+1. **Play**: Start a new poker game against computer-controlled opponents. The game proceeds with a series of hands, where you and the opponents will receive cards, make decisions (bet, fold, raise, etc.), and the game will determine the winner based on the best poker hand.
+   
+2. **Learn**: Access the Learning Section, where you can view tutorials on how to play Texas Hold'em poker, including hand rankings, betting strategies, and basic gameplay. This section helps both beginners and experienced players improve their skills.
+   
+3. **Cheat**: Use the Cheat Section to modify certain game parameters for testing purposes. You can experiment with different deck compositions, probabilities, or AI decision-making to observe how the game reacts in different scenarios.
+   
+4. **Exit**: Close the game.
 
 ## Requirements
 
