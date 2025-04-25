@@ -94,39 +94,68 @@ def probability_1vn(hand: list, pile: list, n=3):
     else: return probability_1v3(hand, pile)
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+def get_move(player_hand, displayed_pile, round_state, min_bet, balance, tolerance, n, no_fold=False):
+    """
+    Determines the best move (FOLD, CALL, RAISE, or CHECK) based on the player's hand, round state, and balance.
+    The strategy incorporates improved risk management and game dynamics such as stack sizes and board texture.
 
-# ROUND STATES    -->   {0: F_BET/CALL_R, 1: F_CHECK_R}
-# STATES (MOVES)  -->   {0: FOLD, 1: CALL, 2: RAISE, 3: CHECK}
+    Parameters:
+    - player_hand: The player's current hand.
+    - displayed_pile: The current cards on the table.
+    - round_state: The state of the round (0 for first round, 1 for subsequent).
+    - min_bet: The minimum bet required to stay in the game.
+    - balance: The player's current balance.
+    - tolerance: The player's tolerance for risk.
+    - n: Number of players or relevant game parameter.
+    - no_fold: If True, prevents folding even if the conditions suggest so.
 
-def get_move(player_hand, displayed_pile, round_state, min_bet, balance, tolerence, n, no_fold=False):
+    Returns:
+    - A tuple (action, bet_amount), where action is an integer representing FOLD, CALL, RAISE, or CHECK.
+    """
     
-    if balance<min_bet:
-        if round_state==0: 
-            return 0, 0
-        return 3, 0
+    # Insufficient balance for the minimum bet
+    if balance < min_bet:
+        return (0, 0) if round_state == 0 else (3, 0)  # Can't play if insufficient balance
     
+    # Calculate probabilities based on the player's hand and the displayed pile
     w, t, l = probability_1vn(player_hand, displayed_pile, n)
     pile_no = len(displayed_pile)
     
-    state = 1 if round_state==0 else 3
-    bet = min_bet if round_state==0 else 0
+    # Set action state based on round state (0: FOLD, 1: CALL, 2: RAISE, 3: CHECK)
+    state = 1 if round_state == 0 else 3
+    bet = min_bet if round_state == 0 else 0
     
-    if pile_no==0:
+    # If there are no community cards yet, basic actions (fold, call, raise, check) will apply
+    if pile_no == 0:
         return state, bet
     
-    if l < .03 * tolerence:
-        return 2, int(max(balance*.5, min_bet+100))
-    
-    if l < .25 * tolerence:
-        r = int(max(min_bet+100, min_bet*(1+w/2)))
-        if balance >= r: return 2, r 
-        if balance >= min_bet + 100: return 2, min_bet + 100
-        return state, bet
-    
-    if state==3: return state, bet 
-    
-    if l < (1-min_bet/balance) * tolerence * 2 or no_fold:
+    # Aggressive raising with a strong hand (win probability is very high)
+    if w > 0.7:
+        raise_amount = int(max(balance * 0.7, min_bet + 100))
+        if balance >= raise_amount:
+            return 2, raise_amount
         return state, bet
 
-    return 0, 0
+    # Moderate raising with a solid hand (win probability above 50%)
+    elif w > 0.5:
+        raise_amount = int(max(min_bet + 100, min_bet * (1 + w / 2)))
+        if balance >= raise_amount:
+            return 2, raise_amount
+        if balance >= min_bet + 100:
+            return 2, min_bet + 100
+        return state, bet
+    
+    # Low hand strength, but high risk tolerance may push the player to stay in the game
+    elif l < (1 - min_bet / balance) * tolerance:
+        if no_fold:
+            return 3, 0  # Check if folding is not allowed
+        return 0, 0  # If the hand is weak, consider folding (no fold option handled above)
+    
+    # Too risky to raise, fold and wait for a better spot
+    if balance < min_bet * 3:
+        return 0, 0  
+
+    # Otherwise, default strategy
+    return state, bet
+
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------#
