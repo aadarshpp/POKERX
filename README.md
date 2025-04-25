@@ -1,13 +1,15 @@
 
 # POKERX
 
-POKERX is a poker game developed in Python using `customtkinter` for the user interface, along with various other libraries for game mechanics and AI-based decision-making. You can either download the executable file (`POKERX.exe`) from the `Releases` section or clone the repository and run it in your local environment.
+POKERX is a Texas Hold'em poker game developed in Python using `customtkinter` for the user interface, along with various other libraries for game mechanics and decision-making. You can either download the executable file (`POKERX.exe`) from the `Releases` section or clone the repository and run it in your local environment.
 
 ## Features
 
-- **Interactive Poker Game**: A fully functional poker game with AI opponents.
-- **AI Move Prediction**: The game includes AI for opponents, which calculates probability and makes decisions.
+- **Interactive Poker Game**: A fully functional Texas Hold'em poker game with computer-controlled opponents.
+- **Move Prediction**: The game includes automated decision-making for the opponents based on game probabilities.
 - **Custom UI**: Built using `customtkinter` for a visually appealing and intuitive interface.
+- **Cheat Section**: A section for testing and using cheats to modify game parameters.
+- **Learning Section**: A dedicated section to help you learn poker strategies.
 
 ## Requirements
 
@@ -79,7 +81,7 @@ POKERX/
 │   └── ...                       # Other image assets (background, etc.)
 │
 ├── COMPUTE.py                   # Helper functions for computations
-├── PREDICT.py                   # Functions for AI move and probability calculations
+├── PREDICT.py                   # Functions for move predictions and probability calculations
 ├── POKERX.py                    # Main game logic and UI
 │
 ├── requirements.txt             # Python dependencies
