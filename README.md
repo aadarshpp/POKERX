@@ -89,7 +89,7 @@ POKERX/
 ## Troubleshooting
 
 - If you run into any issues while running the game, ensure that all dependencies are installed correctly by running `pip install -r requirements.txt`.
-- If you encounter problems with the `POKERX.exe`, make sure all necessary image files are present in the `IMAGES/` directory, as they are required for the game to run properly.
+- If you encounter problems with the `POKERX.py`, make sure all necessary image files are present in the `IMAGES/` directory, as they are required for the game to run properly.
 
 ## License
 
