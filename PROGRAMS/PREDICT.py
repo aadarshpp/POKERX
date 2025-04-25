@@ -155,7 +155,7 @@ def get_move(player_hand, displayed_pile, round_state, min_bet, balance, toleran
     if balance < min_bet * 3:
         return 0, 0  
 
-    # Otherwise, default strategy
+    # Otherwise, default strategy (check or call based on hand strength)
     return state, bet
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------#
