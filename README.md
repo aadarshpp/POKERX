@@ -16,11 +16,11 @@ To run POKERX, you will need Python 3.7+ and the following libraries:
 - `customtkinter` for the UI
 - `Pillow` for image handling
 
-### Option 1: Running the Executable (`POKERX.exe`)
+### Running the Executable (`POKERX.exe`)
 
 The easiest way to play the game is by simply running the `POKERX.exe` file, which can be found in the `Releases` section of this repository. No installation or additional setup is required. Just download and run the executable!
 
-### Option 2: Running from Source (Cloning the Repository)
+### Running from Source (Cloning the Repository)
 
 If you prefer to run the game from the source code, follow these steps:
 
