@@ -17,18 +17,11 @@ h = win.winfo_screenheight()
 win.title("Poker")
 win.geometry(f"{w}x{h}+0+0")
 
-# # Set base path to the parent directory
-# if getattr(sys, 'frozen', False):
-#     base_path = os.path.dirname(sys._MEIPASS)
-# else:
-#     base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-
-# Set base path to the current directory of the script (not the parent)
+# Set base path to the current directory of the script
 if getattr(sys, 'frozen', False):
     base_path = os.path.dirname(sys._MEIPASS)
 else:
-    base_path = os.path.dirname(__file__)  # This will now use the same directory where the script is located
-
+    base_path = os.path.dirname(__file__)
 
 # Returns the path for an image file
 def path(imagename):
