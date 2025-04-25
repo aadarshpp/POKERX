@@ -5,7 +5,6 @@ from PIL import Image
 # Importing user defined modules
 import COMPUTE
 import PREDICT
-import VIDEOPLAYER
 
 # Creating a ctk window
 win = ctk.CTk(fg_color="black")
@@ -16,7 +15,7 @@ win.geometry(f"{w}x{h}+0+0")
 
 # Returns the path for an image file
 def path(imagename):
-    return fr"C:\code\Python\POKER\IMAGES\{imagename}"
+    return fr"./IMAGES/{imagename}"
 
 # Returns the path for a card image based on the card value
 def cardpath(c):
@@ -184,20 +183,12 @@ def page(bg, prev, next=None, full_back=False):
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 
 # Initiates the start screen with an image label and transitions to the home screen after a delay.
-def start(restart=False):    
-    def playvid():
-        video = r"C:\code\Python\POKER\VIDEOS\INTRO_US.mp4"
-        VIDEOPLAYER.playvideo(video, 19)
-    
-    if not restart: 
-        playvid()
-        
+def start():    
     win.overrideredirect(True)
     l = imagelabel('START.PNG', Size=(w, h), Rx=.5, Ry=.5)
     l.after(2500, home)
     
     
-
 # Displays the home screen with background image and buttons to play, learn, cheat, and exit.
 def home():
     bgimage('HOME_SCREEN.PNG')
@@ -285,7 +276,7 @@ def cheat():
     def err():
         # Displays an error message and returns to the start screen
         errlabel = bgimage('ERR_G.png')
-        errlabel.after(7000, lambda: start(restart=True))
+        errlabel.after(7000, lambda: start())
 
     cheat_main()
 
