@@ -21,8 +21,8 @@ def rank_of_best_hand(cards: list[tuple]) -> tuple[int]:
     
     #-----------------------------------------------------------------------------------------------------------------------------------------------------------------#
 
-    N = [c[1] for c in cards]
-    S = [c[0] for c in cards]
+    N = [c[1] for c in cards] # Numbers of the cards
+    S = [c[0] for c in cards] # Suits of the cards
     
     suit_dict = {}
     for i in range(len(S)):
